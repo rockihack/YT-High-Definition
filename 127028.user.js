@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Youtube High Definition
 // @namespace       rocki
-// @version         1.4.6
+// @version         1.4.7
 // @grant           none
 // @downloadURL     https://raw.github.com/rockihack/YT-High-Definition/master/127028.user.js
 // @updateURL       https://raw.github.com/rockihack/YT-High-Definition/master/127028.meta.js
@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 // Author: rocki.hack@gmail.com
-// Date: 12.03.14
+// Date: 12.02.15
 // License: GNU General Public License v3 (GPL)
 
 // contentEval (http://wiki.greasespot.net/Content_Script_Injection)
@@ -86,8 +86,9 @@
 
 		// Change player size
 		if(watch_wide){
-			d.getElementById('player').className = 'watch-playlist-collapsed watch-medium';
-			d.getElementById('watch7-container').className = 'watch-wide';
+			d.getElementById('page').className += ' watch-stage-mode';
+			d.getElementById('player').className += ' watch-large';
+			d.getElementById('watch7-container').className += ' watch-wide';
 		}
 
 		// Check for valid player object
