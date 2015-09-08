@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Youtube High Definition
 // @namespace       rocki
-// @version         1.4.7
+// @version         1.5.0
 // @grant           none
 // @downloadURL     https://raw.github.com/rockihack/YT-High-Definition/master/127028.user.js
 // @updateURL       https://raw.github.com/rockihack/YT-High-Definition/master/127028.meta.js
@@ -9,7 +9,6 @@
 // ==/UserScript==
 
 // Author: rocki.hack@gmail.com
-// Date: 12.02.15
 // License: GNU General Public License v3 (GPL)
 
 // contentEval (http://wiki.greasespot.net/Content_Script_Injection)
@@ -132,8 +131,10 @@
 				p.removeEventListener('onStateChange', 'onPlayerStateChangeHD');
 
 			// Play video now
-			else if(z === 2)
-				p.playVideo();
+			else if(z === 2){
+				w.setTimeout(p.playVideo, 0);
+				w.setTimeout(p.playVideo, 200);
+			}
 
 		}catch(e){
 			console.log('Youtube player exception: ' + e);
