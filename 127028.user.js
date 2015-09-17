@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Youtube High Definition
 // @namespace       rocki
-// @version         1.5.0
+// @version         1.5.1
 // @grant           none
 // @downloadURL     https://raw.github.com/rockihack/YT-High-Definition/master/127028.user.js
 // @updateURL       https://raw.github.com/rockihack/YT-High-Definition/master/127028.meta.js
@@ -54,7 +54,8 @@
 		'hd720':4,
 		'hd1080':5,
 		'hd1440':6,
-		'highres':7
+		'hd2160':7,
+		'highres':8
 	},
 
 	// Local maximum
