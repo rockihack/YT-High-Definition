@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Youtube High Definition
 // @namespace       rocki
-// @version         1.5.1
+// @version         1.5.2
 // @grant           none
 // @downloadURL     https://raw.github.com/rockihack/YT-High-Definition/master/127028.user.js
 // @updateURL       https://raw.github.com/rockihack/YT-High-Definition/master/127028.meta.js
@@ -45,7 +45,7 @@
 	// onYouTubePlayerReady
 	_onYouTubePlayerReady = w.onYouTubePlayerReady || function(){},
 
-	// Quality levels
+	// Quality levels enumeration
 	q = {
 		'tiny':0,
 		'small':1,
@@ -59,10 +59,7 @@
 	},
 
 	// Local maximum
-	maximum = 'hd1080',
-
-	// Enable wide player size
-	watch_wide = false;
+	maximum = 'hd1080';
 
 	// Hook YouTubePlayerReady callback
 	w.onYouTubePlayerReadyHD = function(){
@@ -84,13 +81,6 @@
 				d.getElementById('movie_player-html5-flash');
 		}
 
-		// Change player size
-		if(watch_wide){
-			d.getElementById('page').className += ' watch-stage-mode';
-			d.getElementById('player').className += ' watch-large';
-			d.getElementById('watch7-container').className += ' watch-wide';
-		}
-
 		// Check for valid player object
 		if(p){
 			console.log('Youtube player type: ' + typeof p);
@@ -98,8 +88,8 @@
 			// Add onStateChange listener
 			p.addEventListener('onStateChange','onPlayerStateChangeHD');
 
-			// Pause video to prevent interrupts
-			p.pauseVideo();
+			// Set playback quality
+			w.onPlayerStateChangeHD(-1);
 		}
 
 		// Call original function
@@ -112,7 +102,7 @@
 
 		// Catch internal exceptions to prevent flash crashs
 		try{
-			// Get actual playback quality
+			// Get current playback quality
 			var aq = p.getPlaybackQuality(),
 
 			// Get available video quality
@@ -126,17 +116,6 @@
 				p.setPlaybackQuality(zq);
 				console.log('Youtube player quality: ' + aq + ' -> ' + zq);
 			}
-
-			// Disable hook
-			if(z === 1)
-				p.removeEventListener('onStateChange', 'onPlayerStateChangeHD');
-
-			// Play video now
-			else if(z === 2){
-				w.setTimeout(p.playVideo, 0);
-				w.setTimeout(p.playVideo, 200);
-			}
-
 		}catch(e){
 			console.log('Youtube player exception: ' + e);
 		}
