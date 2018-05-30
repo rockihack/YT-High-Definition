@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Youtube High Definition
 // @namespace       rocki
-// @version         1.5.2
+// @version         1.5.3
 // @grant           none
 // @downloadURL     https://raw.github.com/rockihack/YT-High-Definition/master/127028.user.js
 // @updateURL       https://raw.github.com/rockihack/YT-High-Definition/master/127028.meta.js
@@ -122,7 +122,7 @@
 	};
 
 	// onYouTubePlayerReady
-	if(w.ytplayer)
+	if(w.ytplayer && w.ytplayer.config)
 		w.ytplayer.config.args.jsapicallback = 'onYouTubePlayerReadyHD';
 
 	w.onYouTubePlayerReady = w.onYouTubePlayerReadyHD;
